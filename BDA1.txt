@@ -1,54 +1,51 @@
 // Switch to a new database (or create it if it doesn't exist)
 use mydatabase
 
-
 // Create a collection (or use an existing one)
-db.createCollection("mycollection")
+db.createCollection("students")
 
 **INSERT**
 // Insert single document
-db.mycollection.insertOne({
-    name: "John Cena",
-    age: 40,
-    city: "New York"
+db.students.insertOne({
+    name: "Aarav Sharma",
+    age: 22,
+    city: "Mumbai"
 })
 
 // Insert multiple documents
-db.mycollection.insertMany([
-    { name: "Jane", age: 25, city: "Los Angeles" },
-    { name: "Alex", age: 28, city: "Chicago" },
-    { name: "Shawty", age: 23, city: "New York" }
+db.students.insertMany([
+    { name: "Priya Singh", age: 20, city: "Delhi" },
+    { name: "Rahul Verma", age: 24, city: "Bangalore" },
+    { name: "Ananya Iyer", age: 21, city: "Chennai" },
+    { name: "Naina Joshi", age: 22, city: "Chennai" }
 ])
-
 
 **QUERY**
 // Find all documents in the collection
-db.mycollection.find()
+db.students.find()
 
-// Find documents with a specific condition (e.g., city = "New York")
-db.mycollection.find({ city: "New York" })
+// Find documents with a specific condition (e.g., city = "Mumbai")
+db.students.find({ city: "Mumbai" })
 
 // Find a single document
-db.mycollection.findOne({ name: "Shawty" })
-
+db.students.findOne({ name: "Priya Singh" })
 
 **UPDATE**
-// Update a single document (e.g., update age for John Doe)
-db.mycollection.updateOne(
-    { name: "Jane" },
-    { $set: { age: 31 } }
+// Update a single document (e.g., update age for Priya Singh)
+db.students.updateOne(
+    { name: "Priya Singh" },
+    { $set: { age: 22 } }
 )
 
-// Update multiple documents (e.g., increment age by 1 for all users in New York)
-db.mycollection.updateMany(
-    { city: "New York" },
+// Update multiple documents (e.g., increment age by 1 for all students in Mumbai)
+db.students.updateMany(
+    { city: "Mumbai" },
     { $inc: { age: 1 } }
 )
 
-
 **DELETE**
 // Delete a single document
-db.mycollection.deleteOne({ name: "John Cena" })
+db.students.deleteOne({ name: "Aarav Sharma" })
 
 // Delete multiple documents
-db.mycollection.deleteMany({ city: "Los Angeles" })
+db.students.deleteMany({ city: "Chennai" })
